@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>郵務送件員急徵｜中高齡二度就業・彈性時間・論件計酬</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --blue:#1a3a6e;
+    --green:#2e7d32;
+    --light-green:#4caf50;
+    --gold:#c9a84c;
+    --bg:#f4f8f4;
+    --white:#ffffff;
+    --text:#1a2a1a;
+  }
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);}
+
+  /* TOP BAR */
+  .top-bar{
+    background:var(--green);
+    color:#fff;
+    text-align:center;
+    padding:10px 16px;
+    font-size:14px;
+    font-weight:600;
+  }
+  .top-bar a{color:#fff;text-decoration:none;}
+  .top-bar a:hover{text-decoration:underline;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:999;
+    background:var(--blue);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 24px;height:60px;
+    box-shadow:0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-brand{color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;}
+  .nav-brand span{font-size:22px;}
+  .nav-links{display:flex;align-items:center;gap:8px;}
+  .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;padding:8px 14px;border-radius:6px;font-size:14px;font-weight:500;transition:all .2s;}
+  .nav-links a:hover{color:#fff;background:rgba(255,255,255,0.15);}
+  .nav-links .btn-apply{background:var(--light-green);color:#fff;padding:8px 18px;border-radius:20px;font-weight:700;}
+  .nav-links .btn-apply:hover{background:#388e3c;transform:scale(1.05);}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
+  .hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s;}
+  .mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--blue);z-index:998;padding:16px;flex-direction:column;gap:8px;}
+  .mobile-menu a{color:#fff;text-decoration:none;padding:12px 16px;border-radius:8px;font-size:16px;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .mobile-menu.open{display:flex;}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    background:linear-gradient(135deg, #0d2444 0%, #1a3a6e 40%, #1b5e20 100%);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+    padding:60px 24px;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 80% 20%, rgba(76,175,80,0.15) 0%, transparent 60%),
+               radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.1) 0%, transparent 50%);
+  }
+  /* geometric decorations */
+  .hero-deco{position:absolute;border-radius:50%;opacity:0.08;}
+  .hero-deco-1{width:400px;height:400px;background:var(--light-green);top:-100px;right:-100px;}
+  .hero-deco-2{width:250px;height:250px;background:var(--gold);bottom:-60px;left:-60px;}
+  .hero-deco-3{width:120px;height:120px;background:#fff;top:30%;left:5%;border-radius:50%;opacity:0.05;}
+  /* floating tags */
+  .float-tag{
+    position:absolute;background:rgba(255,255,255,0.12);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.2);border-radius:30px;
+    color:#fff;font-size:13px;font-weight:600;padding:8px 16px;
+    animation:floatY 4s ease-in-out infinite;
+  }
+  .float-tag-1{top:18%;left:6%;animation-delay:0s;}
+  .float-tag-2{top:22%;right:8%;animation-delay:1.5s;}
+  .float-tag-3{bottom:28%;left:5%;animation-delay:0.8s;}
+  @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+  .hero-content{position:relative;z-index:2;text-align:center;max-width:700px;}
+  .hero-badge{
+    display:inline-block;background:rgba(76,175,80,0.25);border:1px solid rgba(76,175,80,0.5);
+    color:#a5d6a7;border-radius:20px;padding:6px 20px;font-size:13px;font-weight:600;
+    margin-bottom:20px;letter-spacing:1px;
+  }
+  .hero-title{font-size:clamp(2rem,6vw,3.5rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:12px;}
+  .hero-title .highlight{color:#a5d6a7;}
+  .hero-subtitle{font-size:clamp(1rem,3vw,1.3rem);color:rgba(255,255,255,0.85);margin-bottom:8px;font-weight:500;}
+  .hero-desc{font-size:14px;color:rgba(255,255,255,0.65);margin-bottom:32px;}
+
+  /* stats bar */
+  .hero-stats{
+    display:flex;justify-content:center;gap:0;margin-bottom:36px;
+    background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;
+    border:1px solid rgba(255,255,255,0.15);
+  }
+  .stat-item{flex:1;padding:16px 12px;text-align:center;border-right:1px solid rgba(255,255,255,0.1);}
+  .stat-item:last-child{border-right:none;}
+  .stat-num{font-size:1.6rem;font-weight:900;color:#a5d6a7;}
+  .stat-label{font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px;}
+
+  .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{
+    background:linear-gradient(135deg,#2e7d32,#4caf50);
+    color:#fff;padding:14px 32px;border-radius:30px;
+    text-decoration:none;font-size:16px;font-weight:700;
+    box-shadow:0 4px 20px rgba(76,175,80,0.4);
+    transition:all .3s;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(76,175,80,0.5);}
+  .btn-secondary{
+    background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.4);
+    color:#fff;padding:14px 32px;border-radius:30px;
+    text-decoration:none;font-size:16px;font-weight:600;
+    transition:all .3s;
+  }
+  .btn-secondary:hover{background:rgba(255,255,255,0.2);transform:translateY(-3px);}
+
+  /* AD SECTION */
+  .ad-section{width:100%;line-height:0;background:#000;}
+  .ad-section img{width:100%;height:auto;display:block;object-fit:contain;}
+
+  /* SECTION */
+  section{padding:72px 24px;}
+  .section-title{text-align:center;margin-bottom:48px;}
+  .section-title h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--blue);margin-bottom:8px;}
+  .section-title p{color:#666;font-size:15px;}
+  .section-title .title-line{width:60px;height:4px;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:2px;margin:12px auto 0;}
+
+  /* WHY US */
+  .why-section{background:#fff;}
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;max-width:1100px;margin:0 auto;}
+  .card{
+    background:linear-gradient(135deg,#f8fffe,#f0f7f0);
+    border:1px solid #c8e6c9;border-radius:16px;padding:28px 24px;
+    transition:all .3s;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(46,125,50,0.15);}
+  .card-icon{font-size:2.4rem;margin-bottom:14px;}
+  .card h3{font-size:1.1rem;font-weight:700;color:var(--blue);margin-bottom:8px;}
+  .card p{font-size:14px;color:#555;line-height:1.7;}
+
+  /* JOBS */
+  .jobs-section{background:var(--bg);}
+  .jobs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:0 auto;}
+  .job-card{
+    background:#fff;border-radius:16px;padding:28px 20px;text-align:center;
+    border:2px solid transparent;
+    box-shadow:0 2px 12px rgba(0,0,0,0.06);
+    transition:all .3s;
+  }
+  .job-card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 8px 24px rgba(46,125,50,0.15);}
+  .job-icon{font-size:2.8rem;margin-bottom:12px;}
+  .job-card h3{font-size:1.1rem;font-weight:700;color:var(--blue);margin-bottom:6px;}
+  .job-card p{font-size:13px;color:#666;}
+  .job-tag{
+    display:inline-block;margin-top:12px;
+    background:#e8f5e9;color:var(--green);
+    padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600;
+  }
+
+  /* CTA BANNER */
+  .cta-banner{
+    background:linear-gradient(135deg,var(--blue),var(--green));
+    padding:56px 24px;text-align:center;
+  }
+  .cta-banner h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:800;color:#fff;margin-bottom:12px;}
+  .cta-banner p{color:rgba(255,255,255,0.8);font-size:15px;margin-bottom:28px;}
+  .btn-line{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#06c755;color:#fff;
+    padding:14px 36px;border-radius:30px;
+    text-decoration:none;font-size:16px;font-weight:700;
+    box-shadow:0 4px 20px rgba(6,199,85,0.4);
+    transition:all .3s;
+  }
+  .btn-line:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(6,199,85,0.5);}
+
+  /* FORM */
+  .form-section{background:#fff;padding:72px 24px;}
+  .form-wrap{max-width:560px;margin:0 auto;}
+  .form-group{margin-bottom:20px;}
+  .form-group label{display:block;font-size:14px;font-weight:600;color:var(--blue);margin-bottom:6px;}
+  .form-group label .req{color:#e53935;margin-left:2px;}
+  .form-group input,.form-group select{
+    width:100%;padding:12px 16px;
+    border:2px solid #c8e6c9;border-radius:10px;
+    font-size:15px;color:var(--text);
+    background:#fafffe;
+    transition:border-color .2s;
+    outline:none;
+  }
+  .form-group input:focus,.form-group select:focus{border-color:var(--green);}
+  .form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%232e7d32' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+  .btn-submit{
+    width:100%;padding:15px;
+    background:linear-gradient(135deg,var(--green),var(--light-green));
+    color:#fff;border:none;border-radius:30px;
+    font-size:16px;font-weight:700;cursor:pointer;
+    box-shadow:0 4px 16px rgba(46,125,50,0.35);
+    transition:all .3s;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(46,125,50,0.45);}
+  .btn-submit:disabled{opacity:0.7;cursor:not-allowed;transform:none;}
+
+  /* SUCCESS */
+  .success-box{
+    display:none;text-align:center;padding:48px 24px;
+    background:linear-gradient(135deg,#e8f5e9,#f1f8e9);
+    border-radius:20px;border:2px solid #a5d6a7;
+  }
+  .success-box .success-icon{font-size:4rem;margin-bottom:16px;}
+  .success-box h3{font-size:1.6rem;font-weight:800;color:var(--green);margin-bottom:12px;}
+  .success-box p{color:#555;font-size:15px;line-height:1.7;margin-bottom:24px;}
+
+  /* FOOTER */
+  footer{background:var(--blue);color:rgba(255,255,255,0.7);text-align:center;padding:32px 24px;}
+  footer .footer-cta{margin-bottom:20px;}
+  footer a.btn-line-sm{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#06c755;color:#fff;
+    padding:12px 28px;border-radius:24px;
+    text-decoration:none;font-size:15px;font-weight:700;
+    transition:all .3s;
+  }
+  footer a.btn-line-sm:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(6,199,85,0.4);}
+  footer p{font-size:13px;margin-top:16px;}
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .hero-stats{flex-direction:column;gap:0;}
+    .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);}
+    .stat-item:last-child{border-bottom:none;}
+    .float-tag-2{display:none;}
+    .float-tag-3{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  💬 <a href="https://line.me/ti/p/KEzNJ5Ejaz" target="_blank">加入 LINE 立即諮詢，了解郵務送件員詳情！</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand"><span>✉️</span> 郵務送件員招募</div>
+  <div class="nav-links">
+    <a href="#home">首頁</a>
+    <a href="#content">內容</a>
+    <a href="#apply" class="btn-apply">✍️ 立即填表應徵</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">🏠 首頁</a>
+  <a href="#content" onclick="closeMenu()">📋 內容</a>
+  <a href="#apply" onclick="closeMenu()">✍️ 立即填表應徵</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-deco hero-deco-1"></div>
+  <div class="hero-deco hero-deco-2"></div>
+  <div class="hero-deco hero-deco-3"></div>
+  <div class="float-tag float-tag-1">📮 中高齡友善職場</div>
+  <div class="float-tag float-tag-2">💰 論件計酬・多勞多得</div>
+  <div class="float-tag float-tag-3">⏰ 彈性時間・自主安排</div>
+  <div class="hero-content">
+    <div class="hero-badge">🚀 急徵郵務送件員</div>
+    <h1 class="hero-title">穩定工作<br><span class="highlight">彈性時間・成就滿滿</span></h1>
+    <p class="hero-subtitle">中高齡二度就業首選・累積經驗・展開新人生</p>
+    <p class="hero-desc">薪資優渥・論件計酬・友善團隊互相支持</p>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">彈性</div><div class="stat-label">自主安排時間</div></div>
+      <div class="stat-item"><div class="stat-num">論件</div><div class="stat-label">多勞多得計酬</div></div>
+      <div class="stat-item"><div class="stat-num">友善</div><div class="stat-label">中高齡歡迎</div></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#apply" class="btn-primary">✍️ 立即填表應徵</a>
+      <a href="#content" class="btn-secondary">了解更多</a>
+    </div>
+  </div>
+</section>
+
+<!-- AD IMAGE -->
+<div class="ad-section">
+  <img src="images/ad.png" alt="郵務送件員招募廣告">
+</div>
+
+<!-- WHY US -->
+<section class="why-section" id="content">
+  <div class="section-title">
+    <h2>為什麼選擇我們</h2>
+    <p>加入我們，開啟你的第二人生</p>
+    <div class="title-line"></div>
+  </div>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">⏰</div>
+      <h3>彈性工作時間</h3>
+      <p>自主安排工作時間，工作生活兩兼顧，不再受制於固定班表。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💰</div>
+      <h3>論件計酬・薪資優渥</h3>
+      <p>按件計算報酬，多勞多得，努力就有回報，收入完全掌握在自己手中。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <h3>友善團隊</h3>
+      <p>同事互相支持，中高齡友善職場環境，讓你安心工作、快樂生活。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <h3>無需特殊技能</h3>
+      <p>只需有責任心、品行良好、有時間觀念，完整教育訓練，新手也能上手。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏆</div>
+      <h3>累積成就感</h3>
+      <p>每日完成派送任務，看到收件人的感謝，工作充滿意義與成就感。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌱</div>
+      <h3>二度就業首選</h3>
+      <p>專為中高齡設計的職缺，不讓年齡成為限制，重新出發展開新人生。</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOBS -->
+<section class="jobs-section">
+  <div class="section-title">
+    <h2>工作內容</h2>
+    <p>多元任務，每天都有新挑戰</p>
+    <div class="title-line"></div>
+  </div>
+  <div class="jobs-grid">
+    <div class="job-card">
+      <div class="job-icon">📬</div>
+      <h3>信件派送</h3>
+      <p>負責區域內信件、帳單、通知書等日常郵件的配送工作</p>
+      <span class="job-tag">每日固定任務</span>
+    </div>
+    <div class="job-card">
+      <div class="job-icon">📦</div>
+      <h3>包裹配送</h3>
+      <p>電商包裹、掛號信件、快遞包裹的收送及簽收確認</p>
+      <span class="job-tag">論件計酬</span>
+    </div>
+    <div class="job-card">
+      <div class="job-icon">🗺️</div>
+      <h3>路線規劃</h3>
+      <p>熟悉負責區域路線，規劃最有效率的派送順序</p>
+      <span class="job-tag">自主彈性</span>
+    </div>
+    <div class="job-card">
+      <div class="job-icon">🤝</div>
+      <h3>客戶服務</h3>
+      <p>親切接待收件人，處理未送達件的後續安排</p>
+      <span class="job-tag">建立關係</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>💬 有興趣歡迎私訊了解詳情</h2>
+  <p>名額有限，意者請速洽，我們將盡快與您聯繫！</p>
+  <a href="https://line.me/ti/p/KEzNJ5Ejaz" target="_blank" class="btn-line">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.89 1.42 5.47 3.65 7.17L5 21l2.95-1.55C9.2 19.8 10.57 20 12 20c5.52 0 10-4.02 10-9S17.52 2 12 2z"/></svg>
+    加入 LINE 立即諮詢
+  </a>
+</div>
+
+<!-- FORM -->
+<section class="form-section" id="apply">
+  <div class="section-title">
+    <h2>✍️ 立即填表應徵</h2>
+    <p>填寫以下資料，我們將盡快與您聯繫</p>
+    <div class="title-line"></div>
+  </div>
+  <div class="form-wrap">
+    <div id="formArea">
+      <form name="apply" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="apply">
+        <input type="hidden" name="bot-field" style="display:none">
+        <div class="form-group">
+          <label>姓名<span class="req">*</span></label>
+          <input type="text" name="name" placeholder="請輸入您的姓名" required>
+        </div>
+        <div class="form-group">
+          <label>Line ID<span class="req">*</span></label>
+          <input type="text" name="line_id" placeholder="請輸入您的 Line ID" required>
+        </div>
+        <div class="form-group">
+          <label>電子郵件</label>
+          <input type="email" name="email" placeholder="請輸入您的電子郵件">
+        </div>
+        <div class="form-group">
+          <label>年齡</label>
+          <input type="number" name="age" placeholder="請輸入您的年齡" min="18" max="80">
+        </div>
+        <div class="form-group">
+          <label>工作年資</label>
+          <select name="experience">
+            <option value="">請選擇工作年資</option>
+            <option value="無工作經驗">無工作經驗</option>
+            <option value="1-3年">1–3 年</option>
+            <option value="4-6年">4–6 年</option>
+            <option value="7-10年">7–10 年</option>
+            <option value="10年以上">10 年以上</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">✍️ 送出應徵資料</button>
+      </form>
+    </div>
+    <div class="success-box" id="successBox">
+      <div class="success-icon">🎉</div>
+      <h3>感謝您的應徵！</h3>
+      <p>我們已成功收到您的應徵資料。<br>將盡快透過 Line 或電子郵件與您聯繫，<br>請保持通訊暢通，期待與您見面！</p>
+      <a href="https://line.me/ti/p/KEzNJ5Ejaz" target="_blank" class="btn-line">
+        💬 加入 LINE 立即諮詢
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-cta">
+    <a href="https://line.me/ti/p/KEzNJ5Ejaz" target="_blank" class="btn-line-sm">
+      💬 加入 LINE 立即諮詢
+    </a>
+  </div>
+  <p>© 2025 郵務送件員招募・中高齡友善職場・彈性時間・論件計酬</p>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+function handleSubmit(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '送出中...';
+  const data = new FormData(form);
+  fetch('/', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: new URLSearchParams(data).toString()
+  })
+  .then(function(){ showSuccess(); })
+  .catch(function(){ showSuccess(); });
+}
+
+function showSuccess(){
+  document.getElementById('formArea').style.display = 'none';
+  const s = document.getElementById('successBox');
+  s.style.display = 'block';
+  s.scrollIntoView({behavior:'smooth', block:'center'});
+}
+</script>
+</body>
+</html>
